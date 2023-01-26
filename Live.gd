@@ -84,16 +84,12 @@ func _physics_process(_delta):
 				T1[i][j] = 0
 				T2[i][j] = 0
 				ArrObjects[i][j].visible = false
-#	if Input.is_action_just_pressed("click") and Pause:
-#		change_cell(get_global_mouse_position())
 	if !Pause:
-		if FPS > 0:
-			FPS -= 1
-			return
-		else:
+		FPS -= 1
+		if FPS <= 0:
 			FPS = FramesPerStep
-		NewStep()
-		DrawLive()
+			NewStep()
+			DrawLive()
 
 
 func change_cell(pos: Vector2):
